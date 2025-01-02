@@ -3,6 +3,7 @@ import type { MangaItem, OrderItem } from "../types";
 
 export default function useOrder() {
     const [order, setOrder] = useState <OrderItem[]>([])
+    const [isModalOpen, setIsModalOpen] = useState(false)
     const addItem = (item: MangaItem) => {
         const itemExist = order.find(orderItem => orderItem.id===item.id)
         if(itemExist){
@@ -22,9 +23,27 @@ export default function useOrder() {
         setOrder(order.filter(item=> item.id != id))
     }
 
+    const openModal = () => setIsModalOpen(true)
+
+    const closeModal = () => {
+        setIsModalOpen(false)
+        setOrder([]);
+    }
+
+    const placeOrder = () => {
+        console.log("Guardando...");
+        openModal();
+        
+    }
+   
+
     return {
         order,
         addItem,
-        removeItem
+        removeItem,
+        placeOrder,
+        isModalOpen,
+        openModal,
+        closeModal
     }
 }

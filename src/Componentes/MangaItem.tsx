@@ -7,7 +7,7 @@ type mangaItemProps = {
 
 export default function MangaItem ({item, addItem}: mangaItemProps) {
     return (
-        <div className="bg-white shadow-xl rounded-lg flex flex-col p-5 gap-2 w-72 h">
+        <div className="bg-white shadow-xl rounded-lg flex flex-col p-5 gap-2 w-full max-w-xs mx-auto">
             <div className="w-auto h-full overflow-hidden flex justify-center">
                 <img
                     src = {item.image}
