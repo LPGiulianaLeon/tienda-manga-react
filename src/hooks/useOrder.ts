@@ -23,6 +23,25 @@ export default function useOrder() {
         setOrder(order.filter(item=> item.id != id))
     }
 
+    const handleIncrement = (id: OrderItem["id"]) => {
+        const updatedOrder = order.map(item =>
+            item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+        );
+        setOrder(updatedOrder);
+    }
+
+    const handleDecrement = (id: OrderItem["id"]) => {
+        const updatedOrder = order.map(item => {
+            if (item.id === id) {
+                return item.quantity > 1
+                    ? { ...item, quantity: item.quantity - 1 } 
+                    : item;
+            }
+            return item;
+        });
+        setOrder(updatedOrder);
+    }
+
     const openModal = () => setIsModalOpen(true)
 
     const closeModal = () => {
@@ -44,6 +63,8 @@ export default function useOrder() {
         placeOrder,
         isModalOpen,
         openModal,
-        closeModal
+        closeModal,
+        handleDecrement,
+        handleIncrement
     }
 }

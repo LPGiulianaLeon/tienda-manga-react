@@ -8,7 +8,7 @@ import useOrder from "./hooks/useOrder"
 
 function App() {
  
-  const {order, addItem, removeItem, placeOrder, isModalOpen, closeModal} = useOrder()
+  const {order, addItem, removeItem, placeOrder, isModalOpen, closeModal, handleDecrement, handleIncrement} = useOrder()
 
   return (
     <>
@@ -36,7 +36,9 @@ function App() {
               <OrderContent
                 order={order} 
                 removeItem={removeItem}  
-                placeOrder={placeOrder}  
+                placeOrder={placeOrder}
+                handleDecrement={handleDecrement}
+                handleIncrement={handleIncrement}  
               />
             </>
           ) : (
